@@ -1,0 +1,6 @@
+C:\Users\rando\Documents\Visual Studio 2019\MotorMonitoring\MotorMonitoring.Model\bin\Release\MotorMonitoring.Model.dll.config
+C:\Users\rando\Documents\Visual Studio 2019\MotorMonitoring\MotorMonitoring.Model\bin\Release\MotorMonitoring.Model.dll
+C:\Users\rando\Documents\Visual Studio 2019\MotorMonitoring\MotorMonitoring.Model\bin\Release\MotorMonitoring.Model.pdb
+C:\Users\rando\Documents\Visual Studio 2019\MotorMonitoring\MotorMonitoring.Model\obj\Release\MotorMonitoring.Model.csproj.CoreCompileInputs.cache
+C:\Users\rando\Documents\Visual Studio 2019\MotorMonitoring\MotorMonitoring.Model\obj\Release\MotorMonitoring.Model.dll
+C:\Users\rando\Documents\Visual Studio 2019\MotorMonitoring\MotorMonitoring.Model\obj\Release\MotorMonitoring.Model.pdb

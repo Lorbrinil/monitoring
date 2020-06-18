@@ -1,0 +1,52 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+<div class="content">
+	<span id="motorData" hidden>@ViewBag.id</span>
+	<script language="javascript">
+		setInterval(function () {
+			const id = document.getElementById("motorData")
+			fetch("/api/motor/" + (parseInt(id.innerText) + 1)).then(function (response) {
+				return response.json().then(function (json) {
+					document.getElementById("motorData").innerText = json["id"];
+					document.getElementById("tTime").innerText = json["time"];
+					document.getElementById("tCurrPos").innerText = json["position"] + " degree";
+					document.getElementById("tAngle1").innerText = json["angle1"] + " degree";
+					document.getElementById("tAngle2").innerText = json["angle2"] + " degree";
+					document.getElementById("tLimits").innerText = json["limits"];
+					document.getElementById("tPause1").innerText = json["pause1"];
+					document.getElementById("tPause2").innerText = json["pause2"];
+					document.getElementById("tSpeed").innerText = json["speed"];
+				});
+			});
+		}, 1000);
+	</script>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Time</th>
+				<th>Current position</th>
+				<th>Angle_1</th>
+				<th>Angle_2</th>
+				<th>Limits</th>
+				<th>Pause_1</th>
+				<th>Pause_2</th>
+				<th>Speed</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="tTime">@ViewBag.time</td>
+				<td id="tCurrPos">@ViewBag.position degree</td>
+				<td id="tAngle1">@ViewBag.angle1 degree</td>
+				<td id="tAngle2">@ViewBag.angle2 degree</td>
+				<td id="tLimits">@ViewBag.limits</td>
+				<td id="tPause1">@ViewBag.pause1</td>
+				<td id="tPause2">@ViewBag.pause2</td>
+				<td id="tSpeed">@ViewBag.speed</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

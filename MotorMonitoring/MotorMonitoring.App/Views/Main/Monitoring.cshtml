@@ -1,0 +1,68 @@
+﻿@{
+	ViewBag.Title = "Monitoring";
+}
+
+	<div class="content">
+		<span id="monitorData" hidden>@ViewBag.id</span>
+		<script language="javascript">
+			setInterval(function () {
+				const id = document.getElementById("monitorData")
+				fetch("/api/monitor/" + @ViewBag.id).then(function (response) {
+					return response.json().then(function (json) {
+						document.getElementById("monitorData").innerText = json["id"];
+
+						let tr = document.createElement("tr");
+						let td = document.createElement("td"); td.innerText = json["id"]; tr.appendChild(td);
+						td = document.createElement("td"); td.innerText = json["positionTime"]; tr.appendChild(td);
+						td = document.createElement("td"); td.innerText = json["positionValue"]; tr.appendChild(td);
+						document.getElementById("tPositionBody").insertAdjacentElement('afterbegin', tr);
+
+						tr = document.createElement("tr");
+						td = document.createElement("td"); td.innerText = json["id"]; tr.appendChild(td);
+						td = document.createElement("td"); td.innerText = json["resistanceTime"]; tr.appendChild(td);
+						td = document.createElement("td"); td.innerText = json["resistanceValue"]; tr.appendChild(td);
+						document.getElementById("tResistanceBody").insertAdjacentElement('afterbegin', tr);
+					});
+				});
+			}, 2000);
+		</script>
+
+		<h1>Position</h1>
+		<div class="scrollable">
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Time</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody id="tPositionBody">
+					<tr>
+						<td id="tId">@ViewBag.id</td>
+						<td id="tPositionTime">@ViewBag.positionTime</td>
+						<td id="tPositionValue">@ViewBag.positionValue</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h1>Resistance</h1>
+		<div class="scrollable">
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Time</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody id="tResistanceBody">
+					<tr>
+						<td id="tId">@ViewBag.id</td>
+						<td id="tResistanceTime">@ViewBag.resistanceTime</td>
+						<td id="tResistanceValue">@ViewBag.resistanceValue</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
